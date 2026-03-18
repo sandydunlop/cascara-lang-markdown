@@ -38,8 +38,8 @@ public class MarkdownDocument extends MarkdownSequenceNode implements Structured
     // StructuredDocument Implementation
     //
 
-    @Override public Optional<URI> getSchemaUri() {
-        return Optional.of(schemaUri);
+    @Override public URI getSchemaUri() {
+        return schemaUri;
     }
 
     @Override

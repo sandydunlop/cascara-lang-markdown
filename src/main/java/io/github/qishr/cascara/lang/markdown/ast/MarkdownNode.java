@@ -11,7 +11,7 @@ import io.github.qishr.cascara.common.lang.ast.CommentAstNode;
 public abstract class MarkdownNode implements AstNode {
 
     protected int startLine, startColumn, endLine, endColumn;
-    protected URI uri;
+    protected URI originUri;
     protected List<MarkdownNode> children = new ArrayList<>();
     protected List<CommentAstNode> comments = new ArrayList<>();
 
@@ -19,7 +19,7 @@ public abstract class MarkdownNode implements AstNode {
     protected MarkdownNode() {
         startLine = 0;
         startColumn = 0;
-        uri = null;
+        originUri = null;
     }
 
 
@@ -28,11 +28,11 @@ public abstract class MarkdownNode implements AstNode {
     ///
     /// @param line   The 1-based line number in the source document.
     /// @param column The 1-based column number in the source document.
-    /// @param uri    The URI of the source document.
-    protected MarkdownNode(int line, int column, URI uri) {
+    /// @param originUri    The URI of the source document.
+    protected MarkdownNode(int line, int column, URI originUri) {
         this.startLine = line;
         this.startColumn = column;
-        this.uri = uri;
+        this.originUri = originUri;
     }
 
     // Standard getters/setters for location data
@@ -49,8 +49,8 @@ public abstract class MarkdownNode implements AstNode {
     @Override public int getEndColumn() { return endColumn; }
     public void setEndColumn(int column) { this.endColumn = column; }
 
-    @Override public URI getUri() { return uri; }
-    public void setUri(URI uri) { this.uri = uri; }
+    @Override public URI getOriginUri() { return originUri; }
+    public void setOriginUri(URI uri) { this.originUri = uri; }
 
     // Each subclass (Object, Array, Scalar) handles its own children
     @Override public abstract List<MarkdownNode> getChildren();
