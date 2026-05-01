@@ -1,13 +1,7 @@
 pluginManagement {
     repositories {
-
         mavenLocal()
         gradlePluginPortal()
-
-        maven {
-            url = uri('https://repo.foojay.io/maven/')
-        }
-
         mavenCentral()
     }
 }
@@ -15,3 +9,4 @@ pluginManagement {
 plugins {
     id 'org.gradle.toolchains.foojay-resolver-convention' version '0.10.0'
 }
+

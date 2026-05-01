@@ -9,6 +9,7 @@ import io.github.qishr.cascara.common.diagnostic.Reporter;
 import io.github.qishr.cascara.common.lang.LanguageOptions;
 import io.github.qishr.cascara.common.lang.exception.ParserException;
 import io.github.qishr.cascara.common.lang.processor.Parser;
+import io.github.qishr.cascara.common.util.ContentType;
 import io.github.qishr.cascara.lang.markdown.MarkdownDocument;
 import io.github.qishr.cascara.lang.markdown.MarkdownOptions;
 import io.github.qishr.cascara.lang.markdown.ast.Alignment;
@@ -27,7 +28,12 @@ import io.github.qishr.cascara.lang.markdown.token.MarkdownToken;
 import io.github.qishr.cascara.lang.markdown.token.MarkdownTokenType;
 
 
-public class MarkdownParser implements Parser<MarkdownDocument> {
+public class MarkdownParser implements Parser<MarkdownDocument, MarkdownToken> {
+    public static final ContentType MARKDOWN_CONTENT_TYPE = new ContentType("Markdown")
+        .withSuffix(".md")
+        .withMimeType("text/markdown")
+        .withMimeType("text/x-markdown");
+
     private Reporter reporter;
     private MarkdownOptions options;
 
@@ -38,10 +44,30 @@ public class MarkdownParser implements Parser<MarkdownDocument> {
     private final java.util.Map<String, String> references = new java.util.HashMap<>();
 
     @Override
+    public ContentType getContentType() {
+        return MARKDOWN_CONTENT_TYPE;
+    }
+
+    @Override
+    public MarkdownDocument parse(String text) throws ParserException {
+        return parse(text, null);
+    }
+
+    @Override
     public MarkdownDocument parse(String text, URI uri) throws ParserException {
         var tokenizer = new MarkdownTokenizer();
         tokenizer.setOptions(options);
-        this.tokens = tokenizer.tokenize(text, uri);
+        return parse(tokenizer.tokenize(text, uri), uri);
+    }
+
+    @Override
+    public MarkdownDocument parse(List<MarkdownToken> tokens) throws ParserException {
+        return parse(tokens, null);
+    }
+
+    @Override
+    public MarkdownDocument parse(List<MarkdownToken> tokens, URI uri) throws ParserException {
+        this.tokens = tokens;
         this.index = 0;
 
         // --- PASS 1: Populate Reference Map ---
@@ -889,5 +915,4 @@ public class MarkdownParser implements Parser<MarkdownDocument> {
 
     @Override public MarkdownParser setReporter(Reporter reporter) { this.reporter = reporter; return this; }
     @Override public MarkdownParser setOptions(LanguageOptions<?> options) { this.options = (MarkdownOptions) options; return this; }
-    @Override public MarkdownDocument parse(String text) throws ParserException { return parse(text, null); }
 }
