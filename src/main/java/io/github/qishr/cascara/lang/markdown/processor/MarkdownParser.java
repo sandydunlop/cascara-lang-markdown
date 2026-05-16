@@ -28,7 +28,7 @@ import io.github.qishr.cascara.lang.markdown.token.MarkdownToken;
 import io.github.qishr.cascara.lang.markdown.token.MarkdownTokenType;
 
 
-public class MarkdownParser implements Parser<MarkdownDocument, MarkdownToken> {
+public class MarkdownParser extends AbstractMarkdownProcessor<MarkdownParser> implements Parser<MarkdownDocument, MarkdownToken> {
     public static final ContentType MARKDOWN_CONTENT_TYPE = new ContentType("Markdown")
         .withSuffix(".md")
         .withMimeType("text/markdown")
@@ -43,10 +43,7 @@ public class MarkdownParser implements Parser<MarkdownDocument, MarkdownToken> {
 
     private final java.util.Map<String, String> references = new java.util.HashMap<>();
 
-    @Override
-    public ContentType getContentType() {
-        return MARKDOWN_CONTENT_TYPE;
-    }
+    @Override protected MarkdownParser self() { return this; }
 
     @Override
     public MarkdownDocument parse(String text) throws ParserException {

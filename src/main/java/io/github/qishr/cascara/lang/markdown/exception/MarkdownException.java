@@ -1,4 +1,4 @@
-package io.github.qishr.cascara.lang.markdown;
+package io.github.qishr.cascara.lang.markdown.exception;
 
 import java.net.URI;
 

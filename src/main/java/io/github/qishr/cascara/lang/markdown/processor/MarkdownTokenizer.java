@@ -6,13 +6,12 @@ import java.util.List;
 
 import io.github.qishr.cascara.common.diagnostic.Reporter;
 import io.github.qishr.cascara.common.lang.LanguageOptions;
-import io.github.qishr.cascara.common.lang.processor.Processor;
 import io.github.qishr.cascara.common.lang.processor.Tokenizer;
 import io.github.qishr.cascara.lang.markdown.MarkdownOptions;
 import io.github.qishr.cascara.lang.markdown.token.MarkdownToken;
 import io.github.qishr.cascara.lang.markdown.token.MarkdownTokenType;
 
-public class MarkdownTokenizer implements Tokenizer<MarkdownToken> {
+public class MarkdownTokenizer extends AbstractMarkdownProcessor<MarkdownTokenizer> implements Tokenizer<MarkdownToken> {
     private Reporter reporter;
     private MarkdownOptions options;
     private int pos = 0;
@@ -20,6 +19,8 @@ public class MarkdownTokenizer implements Tokenizer<MarkdownToken> {
     private int line = 1;
     private int col = 1;
     private List<MarkdownToken> tokens = new ArrayList<>();
+
+    @Override protected MarkdownTokenizer self() { return this; }
 
     @Override
     public List<MarkdownToken> tokenize(String source) {
