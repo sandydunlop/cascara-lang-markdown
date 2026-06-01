@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import io.github.qishr.cascara.common.diagnostic.Diagnostic.Level;
 import io.github.qishr.cascara.common.diagnostic.Reporter;
 import io.github.qishr.cascara.common.diagnostic.SimpleReporter;
-import io.github.qishr.cascara.common.lang.exception.ParserException;
 import io.github.qishr.cascara.lang.markdown.MarkdownDocument;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownLinkNode;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownListItemNode;
@@ -35,7 +34,7 @@ class MarkdownListTests {
     }
 
     @Test
-    void testSimpleList() throws ParserException {
+    void testSimpleList() {
         String content = "* Item 1\n* Item 2";
 
         MarkdownDocument doc = parser.parse(content);
@@ -50,7 +49,7 @@ class MarkdownListTests {
     }
 
     @Test
-    void testListWithFormatting() throws ParserException {
+    void testListWithFormatting() {
         String content = "* Item with **bold**";
 
         MarkdownDocument doc = parser.parse(content);
@@ -63,7 +62,7 @@ class MarkdownListTests {
     }
 
     @Test
-    void testNestedList() throws ParserException {
+    void testNestedList() {
         // Two-level nested list
         String content = """
             * Parent
@@ -96,7 +95,7 @@ class MarkdownListTests {
     }
 
     @Test
-    void testMixedOrderedNestedList() throws ParserException {
+    void testMixedOrderedNestedList() {
         // Unordered parent with an ordered child
         String content = """
             * Unordered
@@ -115,7 +114,7 @@ class MarkdownListTests {
     }
 
     @Test
-    void testDeeplyNestedList() throws ParserException {
+    void testDeeplyNestedList() {
         String content = """
             * Level 1
               * Level 2
@@ -142,7 +141,7 @@ class MarkdownListTests {
     }
 
     @Test
-    void testListThenParagraph() throws ParserException {
+    void testListThenParagraph() {
         // A list followed by a paragraph that is NOT indented
         String content = """
             * Item 1

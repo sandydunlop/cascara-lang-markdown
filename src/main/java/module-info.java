@@ -3,7 +3,6 @@ module cascara.lang.markdown {
 
     exports io.github.qishr.cascara.lang.markdown;
     exports io.github.qishr.cascara.lang.markdown.ast;
-    exports io.github.qishr.cascara.lang.markdown.exception;
     exports io.github.qishr.cascara.lang.markdown.processor;
     exports io.github.qishr.cascara.lang.markdown.token;
 

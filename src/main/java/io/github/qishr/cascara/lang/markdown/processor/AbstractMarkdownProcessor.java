@@ -11,8 +11,8 @@ import io.github.qishr.cascara.lang.markdown.MarkdownOptions;
 public abstract class AbstractMarkdownProcessor<P extends Processor> implements Processor {
     public static final ContentType MARKDOWN_CONTENT_TYPE = new ContentType("Markdown")
         .withSuffix(".md")
-        .withMimeType("text/markdown")
-        .withMimeType("text/x-markdown");
+        .withType("text/markdown")
+        .withType("text/x-markdown");
 
     protected MarkdownOptions options = new MarkdownOptions();
     protected Reporter reporter = new NoOpReporter();

@@ -9,12 +9,10 @@ import org.junit.jupiter.api.Test;
 import io.github.qishr.cascara.common.diagnostic.Diagnostic.Level;
 import io.github.qishr.cascara.common.diagnostic.Reporter;
 import io.github.qishr.cascara.common.diagnostic.SimpleReporter;
-import io.github.qishr.cascara.common.lang.exception.ParserException;
 import io.github.qishr.cascara.lang.markdown.MarkdownDocument;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownImageNode;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownParagraphNode;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownTextNode;
-import io.github.qishr.cascara.lang.markdown.processor.MarkdownParser;
 
 public class MarkdownImagesTests {
 
@@ -28,7 +26,7 @@ public class MarkdownImagesTests {
     }
 
     @Test
-    void testImages() throws ParserException {
+    void testImages() {
         MarkdownParser parser = new MarkdownParser();
         String content = "![Alt text](img.png) and ![Ref image][img2]\n\n[img2]: photo.jpg";
 

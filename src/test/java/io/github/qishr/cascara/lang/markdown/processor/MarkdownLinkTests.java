@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Test;
 import io.github.qishr.cascara.common.diagnostic.Diagnostic.Level;
 import io.github.qishr.cascara.common.diagnostic.Reporter;
 import io.github.qishr.cascara.common.diagnostic.SimpleReporter;
-import io.github.qishr.cascara.common.lang.exception.ParserException;
 import io.github.qishr.cascara.lang.markdown.MarkdownDocument;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownBoldNode;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownEmphasisNode;
@@ -32,7 +31,7 @@ public class MarkdownLinkTests {
     }
 
     @Test
-    void testLinkWithFormatting() throws ParserException {
+    void testLinkWithFormatting() {
         // A link containing bold text
         String content = "[The **Cascara** Project](https://github.com/qishr/cascara)";
 
@@ -54,7 +53,7 @@ public class MarkdownLinkTests {
     }
 
     @Test
-    void testComplexLink() throws ParserException {
+    void testComplexLink() {
         String content = "Check [this **important** link](https://google.com)";
 
         MarkdownDocument doc = parser.parse(content);
@@ -76,7 +75,7 @@ public class MarkdownLinkTests {
     }
 
     @Test
-    void testReferenceLinks() throws ParserException {
+    void testReferenceLinks() {
         String content = """
             [Google][1] and [Yahoo].
 

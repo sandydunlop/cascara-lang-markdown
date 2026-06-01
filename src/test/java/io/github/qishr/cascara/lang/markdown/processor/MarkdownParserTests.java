@@ -14,7 +14,6 @@ import org.junit.jupiter.api.Test;
 import io.github.qishr.cascara.common.diagnostic.Diagnostic.Level;
 import io.github.qishr.cascara.common.diagnostic.Reporter;
 import io.github.qishr.cascara.common.diagnostic.SimpleReporter;
-import io.github.qishr.cascara.common.lang.exception.ParserException;
 import io.github.qishr.cascara.lang.markdown.MarkdownDocument;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownBlockquoteNode;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownHeadingNode;
@@ -40,7 +39,7 @@ class MarkdownParserTests {
     }
 
     @Test
-    void testNestedBlockquote() throws ParserException {
+    void testNestedBlockquote() {
         MarkdownParser parser = new MarkdownParser();
         String content = "> # Heading inside quote\n> This is a paragraph.";
 
@@ -59,7 +58,7 @@ class MarkdownParserTests {
     }
 
     @Test
-    void testParagraphTermination() throws ParserException {
+    void testParagraphTermination() {
         MarkdownParser parser = new MarkdownParser();
         String content = "Paragraph one.\n\n# Heading";
 
@@ -72,7 +71,7 @@ class MarkdownParserTests {
     }
 
     @Test
-    void testReferenceMapPopulation() throws ParserException {
+    void testReferenceMapPopulation() {
         MarkdownParser parser = new MarkdownParser();
         String content = "[1]: http://google.com \"Google\"";
 

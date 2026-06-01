@@ -11,7 +11,6 @@ import org.junit.jupiter.api.Test;
 
 import io.github.qishr.cascara.common.diagnostic.Reporter;
 import io.github.qishr.cascara.common.diagnostic.SimpleReporter;
-import io.github.qishr.cascara.common.lang.exception.ParserException;
 import io.github.qishr.cascara.common.diagnostic.Diagnostic.Level;
 import io.github.qishr.cascara.lang.markdown.token.MarkdownToken;
 import io.github.qishr.cascara.lang.markdown.token.MarkdownTokenType;

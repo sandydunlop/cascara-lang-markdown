@@ -2,10 +2,8 @@ package io.github.qishr.cascara.lang.markdown;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 import io.github.qishr.cascara.common.lang.StructuredDocument;
-import io.github.qishr.cascara.common.lang.ast.AstNode;
 import io.github.qishr.cascara.common.lang.ast.CommentAstNode;
 import io.github.qishr.cascara.common.lang.ast.SequenceAstNode;
 import io.github.qishr.cascara.lang.markdown.ast.MarkdownNode;
@@ -29,7 +27,7 @@ public class MarkdownDocument extends MarkdownSequenceNode implements Structured
 
     /// Returns the primary content node of the document.
     @Override
-    public AstNode getRoot() { return this; }
+    public MarkdownNode getRoot() { return this; }
 
     /// {@inheritDoc}
     // @Override public List<? extends AstNode> getChildren() { return children; }
@@ -45,6 +43,12 @@ public class MarkdownDocument extends MarkdownSequenceNode implements Structured
     @Override
     public List<CommentAstNode> getComments() {
         throw new UnsupportedOperationException("Unimplemented method 'getComments'");
+    }
+
+    @Override
+    public SequenceAstNode<MarkdownNode> remove(MarkdownNode node) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'remove'");
     }
 
 }

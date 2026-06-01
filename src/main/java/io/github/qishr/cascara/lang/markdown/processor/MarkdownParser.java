@@ -7,7 +7,6 @@ import java.util.stream.Collectors;
 
 import io.github.qishr.cascara.common.diagnostic.Reporter;
 import io.github.qishr.cascara.common.lang.LanguageOptions;
-import io.github.qishr.cascara.common.lang.exception.ParserException;
 import io.github.qishr.cascara.common.lang.processor.Parser;
 import io.github.qishr.cascara.common.util.ContentType;
 import io.github.qishr.cascara.lang.markdown.MarkdownDocument;
@@ -31,8 +30,8 @@ import io.github.qishr.cascara.lang.markdown.token.MarkdownTokenType;
 public class MarkdownParser extends AbstractMarkdownProcessor<MarkdownParser> implements Parser<MarkdownDocument, MarkdownToken> {
     public static final ContentType MARKDOWN_CONTENT_TYPE = new ContentType("Markdown")
         .withSuffix(".md")
-        .withMimeType("text/markdown")
-        .withMimeType("text/x-markdown");
+        .withType("text/markdown")
+        .withType("text/x-markdown");
 
     private Reporter reporter;
     private MarkdownOptions options;
@@ -46,24 +45,24 @@ public class MarkdownParser extends AbstractMarkdownProcessor<MarkdownParser> im
     @Override protected MarkdownParser self() { return this; }
 
     @Override
-    public MarkdownDocument parse(String text) throws ParserException {
+    public MarkdownDocument parse(String text) {
         return parse(text, null);
     }
 
     @Override
-    public MarkdownDocument parse(String text, URI uri) throws ParserException {
+    public MarkdownDocument parse(String text, URI uri) {
         var tokenizer = new MarkdownTokenizer();
         tokenizer.setOptions(options);
         return parse(tokenizer.tokenize(text, uri), uri);
     }
 
     @Override
-    public MarkdownDocument parse(List<MarkdownToken> tokens) throws ParserException {
+    public MarkdownDocument parse(List<MarkdownToken> tokens) {
         return parse(tokens, null);
     }
 
     @Override
-    public MarkdownDocument parse(List<MarkdownToken> tokens, URI uri) throws ParserException {
+    public MarkdownDocument parse(List<MarkdownToken> tokens, URI uri) {
         this.tokens = tokens;
         this.index = 0;
 
