@@ -91,7 +91,6 @@ class MarkdownListTests {
         MarkdownListItemNode childItem = (MarkdownListItemNode) childList.get(0);
         // Verify child text
         MarkdownParagraphNode childText = (MarkdownParagraphNode) childItem.get(0);
-        // (Assuming your scalar node stores text in a way we can verify)
     }
 
     @Test

@@ -453,7 +453,7 @@ public class MarkdownParser extends AbstractMarkdownProcessor<MarkdownParser> im
 
         // 2. Create node and set properties
         MarkdownTableCellNode cell = new MarkdownTableCellNode(isHeader);
-        cell.setAlignment(alignment); // Ensure your node has this setter!
+        cell.setAlignment(alignment);
 
         // 3. Parse inlines (bold, italic, etc.)
         cell.getChildren().addAll(new InlineParser(reporter, references).parse(trimmed));
@@ -563,7 +563,6 @@ public class MarkdownParser extends AbstractMarkdownProcessor<MarkdownParser> im
                         titleBuilder.append(consume().getLexeme());
                     }
                     if (!isAtEnd()) consume(); // Close quote/paren
-                    // You can store 'title' here if your LinkNode is updated to support it
                 }
             }
         }
