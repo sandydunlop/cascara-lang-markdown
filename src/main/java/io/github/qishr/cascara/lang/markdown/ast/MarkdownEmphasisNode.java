@@ -16,9 +16,9 @@ public class MarkdownEmphasisNode extends MarkdownNode {
     }
 
     @Override
-    public String getString() {
+    public String asString() {
         // Return the inner text without the formatting markers
-        return super.getString();
+        return super.asString();
     }
 
 

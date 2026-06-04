@@ -12,9 +12,9 @@ public class MarkdownHeadingNode extends MarkdownSequenceNode {
     public int getLevel() { return level; }
 
     @Override
-    public String getString() {
+    public String asString() {
         // Concatenate children (text, bold, etc.) but ignore the '#' markers
-        return super.getString();
+        return super.asString();
     }
 
     @Override public List<MarkdownNode> getChildren() { return children; }

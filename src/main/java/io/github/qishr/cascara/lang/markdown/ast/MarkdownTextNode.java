@@ -17,7 +17,7 @@ public class MarkdownTextNode extends MarkdownNode {
     }
 
     @Override
-    public String getString() {
+    public String asString() {
         return text; // Leaf actually provides the raw data
     }
 }

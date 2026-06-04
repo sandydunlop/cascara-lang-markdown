@@ -20,7 +20,8 @@ public abstract class AbstractMarkdownProcessor<P extends Processor> implements 
 
     protected abstract P self();
 
-    public Properties getCapabilities() {
+    @Override
+    public Properties getServiceProperties() {
         if (capabilities == null) {
             capabilities = new Properties();
             capabilities.set("contentType", "text/markdown");

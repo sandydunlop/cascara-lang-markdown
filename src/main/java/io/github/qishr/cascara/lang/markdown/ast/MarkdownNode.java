@@ -63,12 +63,12 @@ public abstract class MarkdownNode implements AstNode {
     }
 
     @Override
-    public String getString() {
+    public String asString() {
         List<MarkdownNode> children = getChildren();
         if (children.isEmpty()) return "";
 
         return children.stream()
-                .map(MarkdownNode::getString)
+                .map(MarkdownNode::asString)
                 .collect(Collectors.joining());
     }
 }

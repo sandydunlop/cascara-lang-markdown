@@ -53,9 +53,9 @@ public class MarkdownLinkNode extends MarkdownNode implements ReferenceAstNode<M
     }
 
     @Override
-    public String getString() {
+    public String asString() {
         return getChildren().stream()
-                .map(MarkdownNode::getString)
+                .map(MarkdownNode::asString)
                 .collect(Collectors.joining());
     }
 
